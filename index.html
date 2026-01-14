@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Forest Visualization</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Load thư viện miễn phí -->
+    <style>
+        body { font-family: Arial; text-align: center; }
+        .tab { overflow: hidden; border: 1px solid #ccc; background-color: #f1f1f1; }
+        .tab button { background-color: inherit; float: left; border: none; outline: none; cursor: pointer; padding: 14px 16px; }
+        .tabcontent { display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
+    </style>
+</head>
+<body>
+    <h1>Random Forest Visualization</h1>
+    <p>Tôi ưu hóa kiến thức về thuật toán. Hợp đồng chuyện gìa màn hình nhất cho dữ liệu.</p>
+    
+    <!-- Tab menu như trong Gemini -->
+    <div class="tab">
+        <button onclick="openTab(event, 'CoCheCotLoi')">CƠ CHẾ CỐT LÕI</button>
+        <button onclick="openTab(event, 'Ensemble')">ENSEMBLE LEARNING</button>
+        <button onclick="openTab(event, 'DoChech')">ĐỘ CHỆCH & PHƯƠNG SAI</button>
+    </div>
+    
+    <div id="CoCheCotLoi" class="tabcontent">
+        <h3>1. Ổn tập Decision Tree</h3>
+        <p>Decision Tree hoạt động dựa trên các câu quyết định.</p>
+        <div id="treeViz" style="width:600px;height:400px;"></div> <!-- Visualization -->
+    </div>
+    
+    <div id="Ensemble" class="tabcontent">
+        <h3>Ensemble Learning</h3>
+        <p>Mô tả về phương pháp kết hợp nhiều model.</p>
+    </div>
+    
+    <div id="DoChech" class="tabcontent">
+        <h3>Độ Chệch & Phương Sai</h3>
+        <p>Giải thích bias-variance tradeoff.</p>
+    </div>
+    
+    <script>
+        // JS cho tab interactive
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
+            document.getElementById(tabName).style.display = "block";
+        }
+        
+        // Visualization Decision Tree với Plotly
+        var data = [{
+            type: 'sunburst', // Hoặc 'tree' nếu Plotly hỗ trợ
+            labels: ["Root", "Liệu lượng <14.5?", "Yes", "No"],
+            parents: ["", "Root", "Root", "Root"],
+            outsidetextfont: {size: 20, color: "#377eb8"},
+            leaf: {opacity: 0.4},
+            marker: {line: {width: 2}},
+        }];
+        Plotly.newPlot('treeViz', data, {margin: {l: 0, r: 0, b: 0, t: 0}});
+    </script>
+</body>
+</html>
